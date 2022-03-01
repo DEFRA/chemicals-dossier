@@ -1,0 +1,48 @@
+type Query {
+    getDossier(id:ID!):Dossier
+    getTempDossier(storageLocation:String):Dossier
+}
+
+type Mutation {
+    indexDossier(storageLocation: String): ID!
+    persistDossier(storageLocation: String!, dossierId: ID!): ID!
+    deleteDossier(id:String!): ID!
+    dossierMaintenance: Int
+}
+
+type Dossier {
+    id: ID
+    dossierType: String!
+    jointSubmission: Boolean
+    tonnageBand: String
+    onSiteIsolated: String
+    transportIsolated: String
+    substance: Substance
+    referenceSubstance: ReferenceSubstance
+    storageLocation: String
+    reasonsForSpontaneousUpdate: [ReasonForUpdate!]
+    reasonsForRequestedUpdate: [ReasonForUpdate!]
+}
+
+type Substance {
+    substanceName: String!
+    ownerLegalEntityConfidentiality: String
+    referenceSubstanceConfidentiality: String
+}
+
+type ReferenceSubstance {
+  referenceSubstanceName: String!
+  molecularFormula: String
+  ecNumber: String
+  casNumber: String
+  iupacName: String
+  referenceSubstanceInfoConfidentiality: String
+  molecularStructureConfidentiality: String
+}
+
+type ReasonForUpdate {
+  justificationCode: String
+  justificationText: String
+  number: String
+  remarks: String
+}

@@ -1,0 +1,11 @@
+package uk.gov.defra.reach.dossier;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ReachDossierApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(ReachDossierApplication.class, args);
+  }
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+
+  <changeSet id="create-dossier-schema" author="defra">
+    <comment>Add columns for early indexing</comment>
+    <sql>
+      -- Add columsn
+      ALTER TABLE dossier.DossierData
+        ADD
+          CreatedAt DATETIME2(3),
+          StorageState VARCHAR(256),
+          StorageLocation VARCHAR(256);
+
+      -- Add defaults
+      ALTER TABLE dossier.DossierData
+      ADD CONSTRAINT DossierData_CreatedAt_Default DEFAULT GETDATE() FOR CreatedAt;
+
+      UPDATE dossier.DossierData
+      SET CreatedAt = GETDATE()
+      WHERE CreatedAt IS NULL;
+
+      ALTER TABLE dossier.DossierData
+      ADD CONSTRAINT DossierData_StorageState_Default DEFAULT 'TEMPORARY' FOR StorageState;
+
+      UPDATE dossier.DossierData
+      SET StorageState = 'PRODUCTION'
+      WHERE StorageState IS NULL;
+      -- Remove NOT NULL constraint from DossierId
+      ALTER TABLE dossier.DossierData
+      ALTER COLUMN DossierId UNIQUEIDENTIFIER NULL;
+
+      -- Drop constraints from old model
+      ALTER TABLE dossier.DossierData
+      DROP UC_DossierData_DossierIdFileName;
+    </sql>
+    <rollback>
+      -- Drop constraints
+      ALTER TABLE dossier.DossierData
+      DROP DossierData_CreatedAt_Default, DossierData_StorageState_Default, IDX_DossierData_StorageLocation;
+
+      -- Drop columns
+      ALTER TABLE dossier.DossierData
+      DROP COLUMN CreatedAt, StorageState, StorageLocation;
+
+      -- Re-ADD constraint and index
+      ALTER TABLE Dossier.DossierData ADD CONSTRAINT UC_DossierData_DossierIdFileName UNIQUE (DossierId, FileName);
+    </rollback>
+  </changeSet>
+
+</databaseChangeLog>

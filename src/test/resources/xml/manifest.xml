@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="manifest.xsl"?>
+<manifest xmlns="http://iuclid6.echa.europa.eu/namespaces/manifest/v1"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <general-information>
+    <title>IUCLID 6 container manifest file</title>
+    <created>Fri Feb 14 11:10:58 GMT 2020</created>
+    <author>User Super</author>
+    <application>IUCLID6 (4.2.1, build of 24/10/2019 15:59)</application>
+    <submission-type>R_INQUIRY</submission-type>
+    <archive-type>DOSSIER_DATA</archive-type>
+    <legislations-info>
+      <legislation>
+        <id>reach</id>
+        <version>5.0</version>
+      </legislation>
+      <legislation>
+        <id>domain</id>
+        <version>5.0</version>
+      </legislation>
+    </legislations-info>
+  </general-information>
+  <comment></comment>
+  <base-document-uuid>719e351f-3bde-41c3-baba-ceb3f7af23c8/719e351f-3bde-41c3-baba-ceb3f7af23c8</base-document-uuid>
+  <contained-documents>
+    <document id="719e351f-3bde-41c3-baba-ceb3f7af23c8/719e351f-3bde-41c3-baba-ceb3f7af23c8">
+      <type>DOSSIER</type>
+      <name
+        xlink:type="simple"
+        xlink:href="719e351f-3bde-41c3-baba-ceb3f7af23c8_719e351f-3bde-41c3-baba-ceb3f7af23c8.i6d"></name>
+      <first-modification-date>2020-02-14T11:09:30Z</first-modification-date>
+      <last-modification-date>2020-02-14T11:09:30Z</last-modification-date>
+      <uuid>719e351f-3bde-41c3-baba-ceb3f7af23c8/719e351f-3bde-41c3-baba-ceb3f7af23c8</uuid>
+      <links>
+        <link>
+          <ref-uuid>fa90bb47-91e1-46b7-a879-1b6d9d4dd0a7/719e351f-3bde-41c3-baba-ceb3f7af23c8</ref-uuid>
+          <ref-type>DOSSIER_SUBJECT</ref-type>
+        </link>
+      </links>
+      <representation>
+        <subject-type>SUBSTANCE</subject-type>
+        <legal-entity>
+          <name></name>
+          <town></town>
+          <country></country>
+        </legal-entity>
+      </representation>
+    </document>
+    <document id="ECB5-719fb23d-b670-4c0d-92df-ea623ab46c0d/719e351f-3bde-41c3-baba-ceb3f7af23c8">
+      <type>REFERENCE_SUBSTANCE</type>
+      <name
+        xlink:type="simple"
+        xlink:href="ECB5-719fb23d-b670-4c0d-92df-ea623ab46c0d_719e351f-3bde-41c3-baba-ceb3f7af23c8.i6d">fenthion
+      </name>
+      <first-modification-date>2020-02-14T11:09:30Z</first-modification-date>
+      <last-modification-date>2020-02-14T11:09:30Z</last-modification-date>
+      <uuid>ECB5-719fb23d-b670-4c0d-92df-ea623ab46c0d/719e351f-3bde-41c3-baba-ceb3f7af23c8</uuid>
+      <links/>
+      <representation>
+        <name>fenthion</name>
+        <IUPAC-name>O,O-dimethyl O-[3-methyl-4-(methylsulfanyl)phenyl] thiophosphate</IUPAC-name>
+        <CAS-number>55-38-9</CAS-number>
+        <inventory-number>200-231-9</inventory-number>
+      </representation>
+    </document>
+    <document id="fa90bb47-91e1-46b7-a879-1b6d9d4dd0a7/719e351f-3bde-41c3-baba-ceb3f7af23c8">
+      <type>SUBSTANCE</type>
+      <name
+        xlink:type="simple"
+        xlink:href="fa90bb47-91e1-46b7-a879-1b6d9d4dd0a7_719e351f-3bde-41c3-baba-ceb3f7af23c8.i6d">fenthion
+      </name>
+      <first-modification-date>2020-02-14T11:09:30Z</first-modification-date>
+      <last-modification-date>2020-02-14T11:09:30Z</last-modification-date>
+      <uuid>fa90bb47-91e1-46b7-a879-1b6d9d4dd0a7/719e351f-3bde-41c3-baba-ceb3f7af23c8</uuid>
+      <links>
+        <link>
+          <ref-uuid>ECB5-719fb23d-b670-4c0d-92df-ea623ab46c0d/719e351f-3bde-41c3-baba-ceb3f7af23c8</ref-uuid>
+          <ref-type>REFERENCE</ref-type>
+        </link>
+      </links>
+      <representation>
+        <reference-substance>
+          <name>fenthion</name>
+          <IUPAC-name>O,O-dimethyl O-[3-methyl-4-(methylsulfanyl)phenyl] thiophosphate</IUPAC-name>
+          <CAS-number>55-38-9</CAS-number>
+          <inventory-number>200-231-9</inventory-number>
+        </reference-substance>
+        <legal-entity>
+          <name></name>
+          <town></town>
+          <country></country>
+        </legal-entity>
+      </representation>
+    </document>
+    <attachment id="ECB5-100bc512-ea97-4733-a9e0-152d9ad9014e/719e351f-3bde-41c3-baba-ceb3f7af23c8">
+      <name
+        xlink:type="simple"
+        xlink:href="ECB5-100bc512-ea97-4733-a9e0-152d9ad9014e_719e351f-3bde-41c3-baba-ceb3f7af23c8.i6d">55-38-9-V2.jpeg
+      </name>
+      <first-modification-date>2020-02-14T11:09:30Z</first-modification-date>
+      <last-modification-date>2020-02-14T11:09:30Z</last-modification-date>
+      <uuid>ECB5-100bc512-ea97-4733-a9e0-152d9ad9014e/719e351f-3bde-41c3-baba-ceb3f7af23c8</uuid>
+      <container-uuid>ECB5-719fb23d-b670-4c0d-92df-ea623ab46c0d/719e351f-3bde-41c3-baba-ceb3f7af23c8</container-uuid>
+      <linked-attachments>
+        <linked-doc
+          xlink:type="simple"
+          xlink:href="attachments/f9ca2dcf2af4f20c84ad1e17e481ee50.jpeg">55-38-9-V2.jpeg
+        </linked-doc>
+      </linked-attachments>
+    </attachment>
+  </contained-documents>
+</manifest>

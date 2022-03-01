@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd"
+  logicalFilePath="00.create-version-schema.xml">
+
+  <changeSet id="create-dossier-schema" author="defra">
+    <comment>Create Dossier Schema</comment>
+    <sql>
+      CREATE SCHEMA dossier;
+    </sql>
+    <rollback>
+      DROP SCHEMA dossier;
+    </rollback>
+  </changeSet>
+
+  <changeSet id="create-dossier-tables" author="defra">
+    <comment>Create Dossier tables</comment>
+    <sql>
+      CREATE TABLE Dossier.DossierData (
+        Id UNIQUEIDENTIFIER CONSTRAINT PK_DossierData_Id PRIMARY KEY DEFAULT NEWID(),
+        DossierId UNIQUEIDENTIFIER NOT NULL,
+        FileName VARCHAR(256) NOT NULL,
+        Data XML
+      );
+
+      ALTER TABLE Dossier.DossierData ADD CONSTRAINT UC_DossierData_DossierIdFileName UNIQUE (DossierId, FileName);
+      CREATE NONCLUSTERED INDEX IDX_DossierData_DossierId ON Dossier.DossierData(DossierId, FileName);
+    </sql>
+    <rollback>
+      DROP TABLE Dossier.DossierData
+    </rollback>
+  </changeSet>
+
+</databaseChangeLog>

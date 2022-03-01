@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?><?xml-stylesheet type="text/xsl" href="DOSSIER-R_INQUIRY.xsl"?>
+<i6c:Document xmlns:i6c="http://iuclid6.echa.europa.eu/namespaces/platform-container/v1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://iuclid6.echa.europa.eu/namespaces/platform-container/v1 platform-container.xsd"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace">
+  <i6c:PlatformMetadata xmlns:i6m="http://iuclid6.echa.europa.eu/namespaces/platform-metadata/v1"
+    xsi:schemaLocation="http://iuclid6.echa.europa.eu/namespaces/platform-container/v1 platform-container.xsd">
+    <i6m:iuclidVersion>4.2.1</i6m:iuclidVersion>
+    <i6m:documentKey>719e351f-3bde-41c3-baba-ceb3f7af23c8/719e351f-3bde-41c3-baba-ceb3f7af23c8</i6m:documentKey>
+    <i6m:parentDocumentKey/>
+    <i6m:name/>
+    <i6m:documentType>DOSSIER</i6m:documentType>
+    <i6m:documentSubType>R_INQUIRY</i6m:documentSubType>
+    <i6m:orderInSectionNo/>
+    <i6m:definitionVersion>5.0</i6m:definitionVersion>
+    <i6m:creationDate>2020-02-14T11:09:30Z</i6m:creationDate>
+    <i6m:lastModificationDate>2020-02-14T11:09:30Z</i6m:lastModificationDate>
+    <i6m:submissionType>R_INQUIRY</i6m:submissionType>
+    <i6m:submissionTypeVersion>reach 5.0</i6m:submissionTypeVersion>
+    <i6m:submittingLegalEntity/>
+    <i6m:dossierSubject>fa90bb47-91e1-46b7-a879-1b6d9d4dd0a7/719e351f-3bde-41c3-baba-ceb3f7af23c8</i6m:dossierSubject>
+    <i6m:i5Origin>false</i6m:i5Origin>
+    <i6m:creationTool>IUC6</i6m:creationTool>
+    <i6m:snapshotCreationTool>IUC6</i6m:snapshotCreationTool>
+  </i6c:PlatformMetadata>
+  <i6c:Content>
+    <DOSSIER.R_INQUIRY xmlns="http://iuclid6.echa.europa.eu/namespaces/DOSSIER-R_INQUIRY/5.0"
+      xmlns:i6="http://iuclid6.echa.europa.eu/namespaces/platform-fields/v1">
+      <remarks/>
+    </DOSSIER.R_INQUIRY>
+  </i6c:Content>
+  <i6c:Attachments xmlns:i6a="http://iuclid6.echa.europa.eu/namespaces/platform-attachment/v1"
+    xsi:schemaLocation="http://iuclid6.echa.europa.eu/namespaces/platform-attachment/v1 platform-attachment.xsd"/>
+  <i6c:ModificationHistory xmlns:i6h="http://iuclid6.echa.europa.eu/namespaces/platform-modification-history/v1"
+    xsi:schemaLocation="http://iuclid6.echa.europa.eu/namespaces/platform-modification-history/v1 platform-modification-history.xsd"/>
+</i6c:Document>

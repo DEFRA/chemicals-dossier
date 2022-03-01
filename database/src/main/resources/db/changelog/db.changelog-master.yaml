@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/00.create-dossier-schema.xml
+  - include:
+      file: db/changelog/01.add-columns-for-early-indexing.xml
+  - include:
+      file: db/changelog/02.add-storagelocation-index.xml
+  - include:
+      file: db/changelog/03.add-filename-index.xml
