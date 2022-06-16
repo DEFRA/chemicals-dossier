@@ -3,16 +3,13 @@ package uk.gov.defra.reach.dossier.integration;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.graphql.spring.boot.test.GraphQLResponse;
-import com.jayway.jsonpath.Option;
-import com.microsoft.azure.storage.blob.CloudBlobContainer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
-import lombok.SneakyThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,17 +20,29 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.util.ResourceUtils;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.graphql.spring.boot.test.GraphQLResponse;
+import com.microsoft.azure.storage.blob.CloudBlobContainer;
+
+import lombok.SneakyThrows;
 import uk.gov.defra.reach.dossier.controller.DossierIndexRequest;
 import uk.gov.defra.reach.dossier.domain.StorageContainer;
-import uk.gov.defra.reach.dossier.repository.DossierQueryRepository;
-import uk.gov.defra.reach.dossier.service.DossierIndexingService;
 import uk.gov.defra.reach.dossier.service.DossierLoader;
+import uk.gov.defra.reach.security.AuthenticatedUser;
+import uk.gov.defra.reach.security.LegalEntity;
+import uk.gov.defra.reach.security.Role;
+import uk.gov.defra.reach.security.User;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestPropertySource("classpath:application-int.properties")
-public class AbstractIT {
+public abstract class AbstractIT {
+
+  private static final AuthenticatedUser AUTHENTICATED_USER = new AuthenticatedUser(new User(), new LegalEntity(), Role.REACH_MANAGER);
 
   @Autowired
   private ObjectMapper objectMapper;
@@ -53,7 +62,16 @@ public class AbstractIT {
   @MockBean
   private DossierLoader dossierLoader;
 
+  @BeforeEach
+  private void mockSecurityPrincipal() {
+    Authentication authentication = Mockito.mock(Authentication.class);
+    when(authentication.getPrincipal()).thenReturn(AUTHENTICATED_USER);
+    when(authentication.getCredentials()).thenReturn(testJwtToken);
+    SecurityContextHolder.getContext().setAuthentication(authentication);
+  }
+
   protected String indexDossier(String fileName) {
+
     DossierIndexRequest dossierIndexRequest = new DossierIndexRequest();
     UUID dossierId = UUID.randomUUID();
     dossierIndexRequest.setDossierId(dossierId);
@@ -62,8 +80,12 @@ public class AbstractIT {
     mockDossierLoaderForFile(fileName, dossierIndexRequest.getStorageLocation());
 
     HttpEntity<DossierIndexRequest> request = new HttpEntity<>(dossierIndexRequest, headers());
-
-    ResponseEntity<Void> response = restTemplate.postForEntity("/dossier/index", request, Void.class);
+    ResponseEntity<Void> response = null;
+try {
+     response = restTemplate.postForEntity("/dossier/index", request, Void.class);
+} catch (NullPointerException ex) {
+  ex.printStackTrace();
+}
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
     String graphQlMutation = String.format("{"

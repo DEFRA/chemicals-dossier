@@ -64,7 +64,6 @@ class DossierQueryRepositoryIT {
 
   @Test
   void getDossierByStorageLocation_shouldCheckForDossierExistance() {
-    UUID dossierId = UUID.randomUUID();
     String storageLocation = UUID.randomUUID().toString();
     assertThat(dossierFileRepository.getDossierByStorageLocation(storageLocation)).isNull();
     dossierFileRepository.saveDossierData(storageLocation, loadTestDocuments());

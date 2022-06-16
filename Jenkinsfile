@@ -42,7 +42,15 @@ node (label: 'autoSlaveLive') {
 
     withEnv(envArray) {
       def CREATE_DB = [APP, "reach-dossier-unit-test-${helper.getEnvSuffix()}"]
-      reachPipeline(CREATE_DB)
+      def STORAGE_CONTAINERS = []
+      def runIntegrationTests = {
+            withMaven(
+                    options: [artifactsPublisher(disabled: true), jacocoPublisher(disabled: true)], mavenOpts: helper.getMavenOpts()
+            ) {
+                sh(label: "Run e2e tests", script: "mvn verify -P e2e-tests")
+            }
+      }
+      reachPipeline(CREATE_DB, STORAGE_CONTAINERS, runIntegrationTests)
     }
   }
 }

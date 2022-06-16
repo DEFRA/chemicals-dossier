@@ -45,8 +45,7 @@ public class LoggingHandlerExceptionResolverTest {
 
     String exceptionMessage = "An error occurred";
 
-    Exception ex = mock(Exception.class);
-    when(ex.getMessage()).thenReturn(exceptionMessage);
+    Exception ex = new Exception(exceptionMessage);
 
     assertThat(loggingHandlerExceptionResolver.resolveException(request, response, handler, ex)).isNull();
     assertThat(testLogger.search(exceptionMessage).size()).isEqualTo(1);

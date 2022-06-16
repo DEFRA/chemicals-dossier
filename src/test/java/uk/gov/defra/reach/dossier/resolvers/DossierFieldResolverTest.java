@@ -6,20 +6,21 @@ import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import graphql.language.Field;
-import graphql.language.Selection;
-import graphql.language.SelectionSet;
-import graphql.schema.DataFetchingEnvironment;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import graphql.language.Field;
+import graphql.language.Selection;
+import graphql.language.SelectionSet;
+import graphql.schema.DataFetchingEnvironment;
 import uk.gov.defra.reach.dossier.dto.Dossier;
 import uk.gov.defra.reach.dossier.dto.ReasonForUpdate;
 import uk.gov.defra.reach.dossier.dto.ReferenceSubstance;
